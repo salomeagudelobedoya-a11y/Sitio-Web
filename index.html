@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Servicio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenidos a Mi Servicio</h1>
+        <input type="text" placeholder="Buscar en el mundo...">
+    </header>
+
+    <main>
+        <section>
+            
+
+
+            <h2>Registro</h2>
+            <form action="/registro" method="POST">
+                <input type="text" name="nombre" placeholder="Tu nombre" required><br>
+                <input type="email" name="correo" placeholder="Correo electrónico" required><br>
+                <input type="password" name="password" placeholder="Contraseña" required><br>
+                <button type="submit">Registrarse</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Chat grupal</h2>
+            <div id="chat-box">
+                <!-- Aquí aparecerán los mensajes (más adelante lo programamos) -->
+            </div>
+            <form action="/enviar" method="POST">
+                <input type="text" name="mensaje" placeholder="Escribe un mensaje..." required>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        {% if noticias %}
+        <section>
+            <h2>Resultados de noticias:</h2>
+            <ul>
+                {% for n in noticias %}
+                <li><a href="{{ n.enlace }}" target="_blank">{{ n.titulo }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+    </main>
+</body>
+
+</html>
+
